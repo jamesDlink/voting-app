@@ -1,0 +1,97 @@
+<% include ../partials/header %>
+<div class="container">
+    <div class="row" id="show-poll-row">
+        <div class="col-4" id="show-poll-name-col" >
+            <h1 id="poll-name"><%=poll.name%></h1>
+            <a href="/user/<%=poll.creator.id%>" class="lead" id="poll-creator"><em>By <%=poll.creator.username%></em></a>
+            <p class="mt-4 lead">Share it on twitter !</p>
+            <div class="container" id="social-media-container">
+                <a href="https://twitter.com/intent/tweet?text=Look at this poll from VotingApp! <%=poll.name%> : &hashtags=VotingApp &url=https://personalprojects-nachito222.c9users.io/polls/<%=poll._id%>"><i class="fab fa-twitter-square"></i></a>
+            </div>
+        </div>
+        <div class="col-8" id="show-poll-chart-col">
+            <span class="lead" id="show-total-votes"><em>Total votes: <%=poll.totalVotes%></em></span>
+            <div>
+            <canvas id="myChart" width="200" height="200"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="show-poll-bottom-container">
+        <form id="vote-form" class="form-inline" method="POST" action="/polls/<%=poll._id%>">
+                <label for="answer-select"><strong>I'd like to vote for..</strong></label>
+                <select class="custom-select" id="answer-select" name="voted" >
+                    <% poll.answers.forEach((answer)=>{ %>
+                        <option label="<%=answer.answer%>" value="<%=answer.answer%>"><%=answer.votes%></option>
+                    <% }) %>
+                </select>
+            <button id="btn-vote" class="btn btn-success btn-lg">Vote!</button>  
+        </form>
+        
+        <a href="/polls" class="btn btn-lg back-button">Back</a>
+        <% if(currentUser && currentUser._id.equals(poll.creator.id)){ %>
+        <div id="creator-options-container">
+            <a href="/polls/<%=poll._id%>/edit" class="btn btn-md btn-info"><i class="fas fa-edit"></i></a>
+            <form class="d-inline m-0" method="POST" action="/polls/<%=poll._id%>?_method=DELETE">
+                <button class="btn btn-md btn-danger"><i class="fas fa-trash-alt"></i></button>
+            </form>
+        </div>
+        <% } %>
+        
+    </div>
+</div>
+<% include ../partials/footer %>
+
+
+<script>
+
+
+var options = document.getElementsByTagName("option");
+
+    var labels = [],
+        data = [],
+        backgroundColors = [],
+        borderColors = [],
+        colors = ['rgba(244, 95, 66,0.2)','rgba(244, 223, 65,0.2)','rgba(175, 244, 65,0.2)','rgba(65, 244, 73,0.2)','rgba(65, 244, 211,0.2)','rgba(65, 139, 244,0.2)','rgba(109, 65, 244,0.2)','rgba(232, 65, 244,0.2)','rgba(244, 65, 169,0.2)'],
+        borderColorArr = ['rgba(244, 95, 66,1.0)','rgba(244, 223, 65,1.0)','rgba(175, 244, 65,1.0)','rgba(65, 244, 73,1.0)','rgba(65, 244, 211,1.0)','rgba(65, 139, 244,1.0)','rgba(109, 65, 244,1.0)','rgba(232, 65, 244,1.0)','rgba(244, 65, 169,1.0)'];
+    
+    for (var i=0; i<options.length ;i++){
+        var answer = options[i];
+        labels.push(answer.label);
+       data.push(answer.textContent);
+       backgroundColors.push(colors[i%colors.length]);
+       borderColors.push(borderColorArr[i%borderColorArr.length]);
+    }
+
+
+
+var ctx = document.getElementById("myChart").getContext('2d');
+ctx.canvas.width = 100;
+ctx.canvas.height = 100;
+var myChart = new Chart(ctx, {
+    type: 'doughnut',
+    responsive:true,
+    maintainAspectRatio:false,
+    data: {
+        labels:labels ,
+        datasets: [{
+            label: '# of Votes',
+            data: data,
+            backgroundColor: backgroundColors,
+            borderColor: borderColors,
+            borderWidth: 1
+        }]
+    }
+});
+
+
+
+var btnVote = document.getElementById("btn-vote"),
+    form = document.getElementById("vote-form");
+    
+    btnVote.addEventListener("click",function(){
+        btnVote.disabled = true;
+        form.submit();
+    })
+
+
+</script>

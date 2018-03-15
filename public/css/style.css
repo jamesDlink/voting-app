@@ -1,0 +1,274 @@
+
+*{
+    box-sizing:border-box;
+}
+
+
+nav{
+    width:80% !important;
+    margin:auto !important;
+    border-radius:15px;
+    position:fixed;
+    top:-60px;
+}
+
+a{
+    outline:none;
+}
+a:focus{
+    outline:none;
+}
+
+body{
+    margin-top:60px !important;
+    font-family: 'Roboto Slab', serif !important;
+    background-color:#d3e4ff !important;
+
+}
+.navbar-brand{
+    font-family: 'Krona One', sans-serif;
+}
+
+.section{
+    width:100%;
+}
+
+
+#welcome-section{
+    text-align:center;
+    padding:100px;
+    padding-top:60px;
+    height:450px;
+    box-shadow: 0 8px 6px -6px #999;
+    position:relative;
+    background-color:steelblue;
+}
+
+#title{
+    font-weight:900;
+    color:white;
+}
+
+
+.btn-lg-custom{
+    font-size:35px !important;
+    margin:15px;
+    margin-top:40px;
+    color:white !important;
+    font-weight:600 !important;
+}
+
+#features-section{
+    text-align:center;
+    margin-top:5%;
+}
+
+#features-section svg{
+    font-size:50px !important;
+    margin-bottom:20px;
+}
+
+#features-section div:nth-of-type(1) svg{
+    color:green;
+}
+
+#features-section div:nth-of-type(2) svg{
+    color:#3b5998;
+}
+
+#features-section div:nth-of-type(3) svg{
+    color:#9f36c9;
+}
+
+#features-section .row{
+    padding:20px;
+}
+
+#polls-main-container{
+    margin: 0 auto;
+    background-color:steelblue;
+    text-align:center;
+    width:50%;
+    border-radius:15px;
+}
+
+#polls-main-container .row{
+    padding:20px;
+}
+
+#polls-main-container .row div{
+    margin:10px;
+}
+
+.poll-selector{
+    width:100%;
+    background-color:white;
+    border:2px solid steelblue;
+    height:65px;
+    position:relative;
+    color:black;
+}
+
+.poll-selector span{
+    transition-duration:0.6s;
+}
+
+.creator{
+    position:absolute;
+    right:10px;
+    bottom:5px;
+    font-size:15px;
+    color:#acb0b7;
+}
+
+.votes{
+    position:absolute;
+    left:10px;
+    bottom:5px;
+    font-size:15px;
+    color:#acb0b7;
+}
+
+.poll-selector:hover{
+    color:black;
+    background-color:lightgray;
+}
+
+.poll-selector:hover span{
+    color:#43464c;
+}
+
+.polls-header{
+    text-align:center;
+}
+
+.polls-header a{
+    font-size:20px;
+    margin:10px;
+    font-weight:bold;
+    color:white;
+}
+
+.answer-item{
+    background-color:lightgray;
+    border-radius:15px;
+    display:inline-block;
+    font-size:16px;
+    cursor: context-menu;
+}
+
+
+li{
+    list-style-type:none;
+    padding:0 ;
+}
+
+
+.delete-answer-button{
+    background-color:#a0292b;
+    border-radius:15px !important;
+}
+
+.delete-answer-button:hover{
+    background-color:#d14b4d;
+}
+
+.answer-text{
+    padding-left:15px;
+}
+
+#poll-form{
+    width:700px;
+}
+
+#answer-container{
+    overflow:scroll;
+    overflow-x:auto;
+    height:250px;
+    max-height:250px;
+    overflow-y:auto;
+    border:1px solid lightgray;
+    background-color:white;
+    border-radius:15px;
+}
+
+#show-poll-row .col-4, #show-poll-row .col-8{
+    border:1px solid lightgray;
+}
+
+#show-poll-row{
+    border-radius:15px;
+    background-color:white;
+}
+
+#show-poll-bottom-container{
+    position:relative;
+    padding:50px;
+    border:1px solid lightgray;
+}
+
+
+#show-poll-bottom-container form{
+    margin-left:20%;
+}
+
+#show-poll-bottom-container .back-button{
+    position:absolute;
+    bottom:0px;
+    left:10px;
+}
+
+#show-poll-bottom-container .custom-select{
+    width:40% !important;
+    margin:20px;
+}
+
+#show-poll-name-col{
+    padding:40px;
+    text-align:center;
+    height:450px;
+}
+
+#show-poll-chart-col div{
+    position:absolute;
+    left:200px;
+    width:425px;
+}
+
+#show-total-votes{
+    position:absolute;
+    bottom:15px;
+    left:15px;
+}
+
+#poll-name{
+    margin-bottom:20px;
+}
+
+#poll-creator{
+    margin-bottom:50px;
+}
+
+#social-media-container{
+    font-size:50px;
+}
+
+#creator-options-container{
+    position:absolute;
+    right:10px;
+    bottom:5px;
+}
+
+.answer-text span{
+    margin-right:15px;
+}
+
+
+#user-form div{
+    width:30%;
+    margin:0 auto;
+}
+
+#user-form .password-input{
+    margin-bottom:20px;
+}

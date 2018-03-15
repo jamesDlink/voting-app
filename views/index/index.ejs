@@ -1,0 +1,38 @@
+<% include ../partials/header %>
+<div id="welcome-section" class="section">
+    <div class="row">
+        <div class="col-12">
+            <h1 id="title">VOTING APP!</h1>
+        </div>
+        <div class=" mt-5 col-12">
+            <p class="h3">Create your own polls or participate on one created by another user!</p>
+            <% if(!currentUser){ %>
+                <a href="/register" class="btn btn-success btn-lg btn-lg-custom">Sign In</a>
+            <% } %>
+            <a href="/polls" class="btn btn-info btn-lg btn-lg-custom">View Polls</a>
+        </div>
+    </div>
+</div>
+<div id="features-section" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-sm-12">
+                <i class="fas fa-paint-brush"></i>
+                <h2>Personalize</h2>
+                <p class="lead">Create your own polls and save them under your name. You can edit or delete them later.</p>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <i class="fab fa-twitter"></i>
+                <h2>Social Integration</h2>
+                <p class="lead">Share your polls with your friends on the social media!</p>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <i class="fas fa-chart-pie"></i>
+                <h2>Visualize Results</h2>
+                <p class="lead">Check how the polls are going with a beautiful charted display!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include ../partials/footer %>

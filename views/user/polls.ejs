@@ -1,0 +1,28 @@
+<% include ../partials/header %>
+
+<header class="polls-header">
+    <h1><%=user.username%>'s polls</h1>
+    <% if(currentUser && currentUser._id.equals(user._id)){ %>
+    <div class="container">
+        <a href="/polls/new" class="btn btn-success"><i class="fas fa-plus"></i> Create a new poll</a>
+    </div> 
+    <% } %>
+    
+</header>
+<hr>
+<div class="container" id="polls-main-container">
+    <h1>Current Polls</h1>
+    <div class="row">
+        <% polls.forEach((poll)=>{ %>
+           <div class="col-md-12">
+            <a  href="/polls/<%=poll._id%>" class="btn btn-default poll-selector">
+                <%= poll.name %>
+                <span class="creator"><em>Created by: <%= poll.creator.username %></em></span>
+                <span class="votes"><em>Number of votes: <%= poll.totalVotes %></em></span>
+            </a>
+        </div> 
+        <% }) %>
+    </div>
+</div>
+
+<% include ../partials/footer%>

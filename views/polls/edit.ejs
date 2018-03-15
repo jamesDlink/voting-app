@@ -1,0 +1,58 @@
+<% include ../partials/header %>
+
+
+<!--Scripts-->
+<script type="text/javascript" src="/js/create_edit.js">
+</script>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1>Edit poll</h1>
+        </div>
+        <div class="mx-auto mt-5 mb-5">
+            <form id="poll-form" method="POST" action="/polls/<%=poll._id%>?_method=PUT" >
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <span class="badge badge-default">Name</span>
+                            <input id="name-input" class="form-control" type="text" value="<%=poll.name%>" name="poll[name]">
+                        </div>
+                        <div class="form-row">
+                            <div class="col-8 mb-4">
+                                <span class="badge badge-default">Answer</span>
+                                <input id="input-answer" class="form-control" type="text" placeholder="new answer" name="answer">
+                            </div>
+                            <div class="col-4">
+                                <a id="add-answer" class="btn btn-success mt-4 btn-add"><i class="fas fa-plus"></i></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="col-6" id="answer-container">
+                        <h2>Answers:</h2>
+                        <% poll.answers.forEach((answer) =>{ %>
+                        <li>
+                                <div class="answer-item mb-4">
+                                    <div class="answer-text d-inline"><span><%=answer.answer%></span></div>
+                                    <div class="d-inline">
+                                        <a class="btn delete-answer-button"><i class="fas fa-minus-circle"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                        <% }) %>
+                            
+                    </div>
+                </div>
+                <div class="form-group mt-4">
+                    <button id="submit-button" class="btn btn-lg btn-primary btn-block">Submit!</button>
+                </div>
+            </form>
+            <a href="/polls">Go back</a>
+        </div>
+    </div>
+</div>
+
+
+<% include ../partials/footer %>

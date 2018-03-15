@@ -1,0 +1,30 @@
+<% include ../partials/header %>
+<header class="polls-header">
+    <h1>Polls</h1>
+    <p class="lead">Select a poll to see the results and vote, or create a new one.</p>
+    <div class="container">
+        <a href="/polls/new" class="btn btn-success"><i class="fas fa-plus"></i> Create a new poll</a>
+        <% if(currentUser) { %>
+            <a href="/user/<%=currentUser._id%>" class="btn btn-primary"><i class="fas fa-chart-bar"></i> My polls</a>
+        <% } %>
+    </div>
+</header>
+<hr>
+<div class="container" id="polls-main-container">
+    <h1>Current Polls</h1>
+    <div class="row">
+        <% if(polls.length>0){ %>
+        <% polls.forEach((poll)=>{ %>
+           <div class="col-md-12">
+            <a  href="/polls/<%=poll._id%>" class="btn btn-default poll-selector">
+                <%= poll.name %>
+                <span class="creator"><em>Created by: <%= poll.creator.username %></em></span>
+                <span class="votes"><em>Number of votes: <%= poll.totalVotes %></em></span>
+            </a>
+        </div> 
+        <% })} else{ %>
+            <h2>There are no polls :C , create one yourself!</h2>
+        <% } %>
+    </div>
+</div>
+<% include ../partials/footer%>
