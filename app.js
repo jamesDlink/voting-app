@@ -44,7 +44,7 @@ app.use(require("express-session")({
 
 
 //Seed DB
-seedDB();
+//seedDB();
 
 
 //Passport configuration
